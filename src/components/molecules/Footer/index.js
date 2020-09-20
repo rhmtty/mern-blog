@@ -15,7 +15,7 @@ const Footer = () => {
         <div>
             <div className="footer">
                 <div>
-                    <p className="logo">Logo Kopi Sob</p>
+                    <h3 className="logo">Kopi Sob</h3>
                 </div>
                 <div className="social-wrapper">
                     <Icon img={ICFacebook}/>
@@ -24,8 +24,8 @@ const Footer = () => {
                     <Icon img={ICGithub}/>
                 </div>
             </div>
-            <div>
-                <p>Copyright</p>
+            <div className="copyright">
+                <p>Copyright &copy; 2020 - Kopi Sob</p>
             </div>
         </div>
     )

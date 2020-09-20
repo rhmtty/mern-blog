@@ -1,14 +1,16 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Footer, Header } from '../../components';
+import { Footer, Gap, Header } from '../../components';
 import CreateBlog from '../CreateBlog';
 import DetailBlog from '../DetailBlog';
 import Home from '../Home';
+import './mainApp.scss';
 
 const MainApp = () => {
     return (
-      <div>
-            <Header />
+      <div className="main-app-wrapper">
+        <Header />
+        <div className="content-wrapper">
             <Router>
                 <Switch>
                     <Route path="/create-blog">
@@ -22,7 +24,8 @@ const MainApp = () => {
                     </Route>
                 </Switch>
             </Router>
-            <Footer />
+        </div>
+        <Footer />
       </div>
     );
 }

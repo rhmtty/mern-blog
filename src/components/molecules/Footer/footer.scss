@@ -6,9 +6,7 @@
     background-color: #87c7cc;
 
     .logo {
-        width: 70px;
-        height: 70px;
-        object-fit: contain;
+        color: white;
     }
 
     .social-wrapper {
@@ -28,4 +26,16 @@
         }
     }
 
+}
+
+.copyright {
+    background-color: #5fb6bd;
+    padding: 10px 0px;
+
+    p {
+        font-size: 14px;
+        color: white;
+        margin: 0px;
+        margin-left: 20px;
+    }
 }
