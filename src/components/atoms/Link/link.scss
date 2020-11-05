@@ -4,4 +4,8 @@
     color: #ababab;
     text-decoration: underline;
     cursor: pointer;
+
+    &:hover {
+       font-weight: bold; 
+    }
 }
