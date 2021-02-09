@@ -1,5 +1,4 @@
 import React from 'react'
-import { RegisterBG } from '../../../assets'
 import { Link } from '../../atoms'
 import './blogItem.scss'
 import {useHistory} from 'react-router-dom'
