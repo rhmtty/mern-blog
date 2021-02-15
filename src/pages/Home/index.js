@@ -4,6 +4,9 @@ import './home.scss'
 import {useHistory} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setDataBlog } from '../../config/redux/action'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
+import Axios from 'axios'
 
 const Home = () => {
     const [counter, setCounter] = useState(1)
@@ -24,6 +27,32 @@ const Home = () => {
         setCounter(counter === page.totalPage ? page.totalPage : counter + 1)
     }
 
+    const confirmDelete = (id) => {
+        confirmAlert({
+            title: 'Confirm to delete',
+            message: 'Apakah Anda yakin menghapus post ini?.',
+            buttons: [
+                {
+                    label: 'Ya',
+                    onClick: () => {
+                        Axios.delete(`http://localhost:4000/v1/blog/post/${id}`)
+                        .then(res => {
+                            console.log('delete success ', res.data);
+                            dispatch(setDataBlog(counter))
+                        })
+                        .catch(err => {
+                            console.log('err ', err);
+                        })
+                    }
+                },
+                {
+                    label: 'Tidak',
+                    onClick: () => console.log('user tidak setuju')
+                }
+            ]
+        });
+    }
+
     return (
         <div className="home-page-wrapper">
             <div className="create-wrapper">
@@ -33,15 +62,16 @@ const Home = () => {
             <div className="content-wrapper">
                 {dataBlog.map(blog => {
                     return (
-                      <BlogItem
-                        key={blog._id}
-                        image={`http://localhost:4000/${blog.image}`}
-                        title={blog.title}
-                        name={blog.author.name}
-                        date={blog.createdAt}
-                        body={blog.body}
-                        _id={blog._id}
-                      />
+                        <BlogItem
+                            key={blog._id}
+                            image={`http://localhost:4000/${blog.image}`}
+                            title={blog.title}
+                            name={blog.author.name}
+                            date={blog.createdAt}
+                            body={blog.body}
+                            _id={blog._id}
+                            onDelete={confirmDelete}
+                        />
                     );
                 })}
             </div>

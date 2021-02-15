@@ -5,6 +5,7 @@ import {useHistory, withRouter} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { postToAPI, setForm, setImgPreview, updateToAPI } from '../../config/redux/action'
 import Axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 
 const CreateBlog = (props) => {
     const {form, imgPreview} = useSelector(state => state.createBlogReducer);
@@ -15,7 +16,6 @@ const CreateBlog = (props) => {
 
     useEffect(() => {
         const id = props.match.params.id;
-        console.log('params: ', props.match.params.id);
         if(id){
             setIsUpdate(true);
             Axios.get(`http://localhost:4000/v1/blog/post/${id}`)
@@ -37,9 +37,11 @@ const CreateBlog = (props) => {
         if(isUpdate){
             console.log('update data');
             updateToAPI(form, id)
+            notify('Data sukses di update.')
         } else{
             console.log('create data');
             postToAPI(form)
+            notify('Data sukses di tambah.')
         }
     }
 
@@ -48,6 +50,11 @@ const CreateBlog = (props) => {
         dispatch(setForm('image', file))
         dispatch(setImgPreview(URL.createObjectURL(file)))
     }
+
+    const notify = (message) => toast.success(message, {
+        duration: 3000
+    })
+
     return (
         <div className="blog-post">
             <Link title="kembali" onClick={() => history.push('/')} />
@@ -60,6 +67,7 @@ const CreateBlog = (props) => {
                 <Button title={isUpdate ? 'Update' : 'Simpan'} onClick={onSubmit} />
             </div>
             <Gap height={60} />
+            <Toaster />
         </div>
     )
 }
