@@ -7,6 +7,7 @@ import { setDataBlog } from '../../config/redux/action'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import Axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Home = () => {
     const [counter, setCounter] = useState(1)
@@ -38,6 +39,7 @@ const Home = () => {
                         Axios.delete(`http://localhost:4000/v1/blog/post/${id}`)
                         .then(res => {
                             console.log('delete success ', res.data);
+                            notify('Data berhasil di hapus')
                             dispatch(setDataBlog(counter))
                         })
                         .catch(err => {
@@ -52,6 +54,10 @@ const Home = () => {
             ]
         });
     }
+
+    const notify = (message) => toast.success(message, {
+        duration: 3000
+    })
 
     return (
         <div className="home-page-wrapper">
@@ -83,6 +89,7 @@ const Home = () => {
                 <Button title="next" onClick={next} />
             </div>
             <Gap height={20} />
+            <Toaster />
         </div>
     )
 }
