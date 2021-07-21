@@ -2,6 +2,9 @@
   "name": "mern-blog",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.18.0"
+  },
   "dependencies": {
     "axios": "^0.20.0",
     "cra-template": "1.0.3",
