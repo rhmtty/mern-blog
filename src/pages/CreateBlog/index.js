@@ -18,13 +18,13 @@ const CreateBlog = (props) => {
         const id = props.match.params.id;
         if(id){
             setIsUpdate(true);
-            Axios.get(`http://localhost:4000/v1/blog/post/${id}`)
+            Axios.get(`https://kopisob-api.herokuapp.com/v1/blog/post/${id}`)
             .then(res => {
                 const data = res.data.data;
                 console.log('res: ', data);
                 dispatch(setForm('title', data.title));
                 dispatch(setForm('body', data.body));
-                dispatch(setImgPreview(`http://localhost:4000/${data.image}`));
+                dispatch(setImgPreview(`https://kopisob-api.herokuapp.com/${data.image}`));
             })
             .catch(err => {
                 console.log('err: ', err);

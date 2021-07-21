@@ -8,7 +8,7 @@ const DetailBlog = (props) => {
     const [data, setData] = useState({})
     useEffect(() => {
         const id = props.match.params.id;
-        Axios.get(`http://localhost:4000/v1/blog/post/${id}`)
+        Axios.get(`https://kopisob-api.herokuapp.com/v1/blog/post/${id}`)
         .then(res => {
             console.log('success: ', res);
             setData(res.data.data)
@@ -21,7 +21,7 @@ const DetailBlog = (props) => {
     if(data.author) {
         return (
             <div className="detail-blog-wrapper">
-                {/* <img className="img-cover" src={`http://localhost:4000/${data.image}`} alt="thumb" /> */}
+                {/* <img className="img-cover" src={`https://kopisob-api.herokuapp.com/${data.image}`} alt="thumb" /> */}
                 <p className="blog-title">{data.title}</p>
                 <p className="blog-author">{data.author.name} - {data.createdAt}</p>
                 <p className="blog-body">{data.body}</p>

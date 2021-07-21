@@ -36,7 +36,7 @@ const Home = () => {
                 {
                     label: 'Ya',
                     onClick: () => {
-                        Axios.delete(`http://localhost:4000/v1/blog/post/${id}`)
+                        Axios.delete(`https://kopisob-api.herokuapp.com/v1/blog/post/${id}`)
                         .then(res => {
                             console.log('delete success ', res.data);
                             notify('Data berhasil di hapus')
@@ -70,7 +70,7 @@ const Home = () => {
                     return (
                         <BlogItem
                             key={blog._id}
-                            image={`http://localhost:4000/${blog.image}`}
+                            image={`https://kopisob-api.herokuapp.com/${blog.image}`}
                             title={blog.title}
                             name={blog.author.name}
                             date={blog.createdAt}
