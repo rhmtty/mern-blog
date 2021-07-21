@@ -14,7 +14,7 @@ export const postToAPI = (form) => {
     data.append('body', form.body)
     data.append('image', form.image)
 
-    Axios.post('http://localhost:4000/v1/blog/post', data, {
+    Axios.post('https://kopisob-api.herokuapp.com/v1/blog/post', data, {
         headers: {
             'content-type': 'multipart/form-data'
         }
@@ -33,7 +33,7 @@ export const updateToAPI = (form, id) => {
     data.append('body', form.body)
     data.append('image', form.image)
 
-    Axios.put(`http://localhost:4000/v1/blog/post/${id}`, data, {
+    Axios.put(`https://kopisob-api.herokuapp.com/v1/blog/post/${id}`, data, {
         headers: {
             'content-type': 'multipart/form-data'
         }
