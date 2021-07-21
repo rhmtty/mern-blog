@@ -1,9 +1,7 @@
 import Axios from "axios"
 
 export const setDataBlog = (page) => (dispatch) => {
-    const node_fetch_api = `/.netlify/functions/node-fetch`;
-
-    Axios.get(`${node_fetch_api}/v1/blog/posts?page=${page}&perPage=2`)
+    Axios.get(`https://kopisob-api.herokuapp.com//v1/blog/posts?page=${page}&perPage=2`)
       .then((result) => {
         const responseAPI = result.data;
 
