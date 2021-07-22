@@ -3,7 +3,8 @@ import Axios from "axios"
 export const setDataBlog = (page) => (dispatch) => {
     Axios.get(`https://kopisob-api.netlify.app/v1/blog/posts?page=${page}&perPage=2`, {
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
       }
     })
       .then((result) => {
