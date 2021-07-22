@@ -1,1 +1,3 @@
-/*  Access-Control-Allow-Origin: *
+/*  Access-Control-Allow-Origin: https://kopisob-api.herokuapp.com/
+    Access-Control-Allow-Methods: GET, POST, PUT
+    Access-Control-Allow-Headers: Content-Type

@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 
 const handler = async function () {
   try {
-    const response = await fetch('https://kopisob-api.netlify.app', {
+    const response = await fetch('https://kopisob-api.herokuapp.com', {
       headers: { Accept: 'application/json' },
     })
     if (!response.ok) {
