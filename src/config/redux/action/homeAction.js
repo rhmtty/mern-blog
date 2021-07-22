@@ -1,9 +1,9 @@
 import Axios from "axios"
 
 export const setDataBlog = (page) => (dispatch) => {
-  const api_node_fetch = `/.netlify/functions/node-fetch`;
+  // const api_node_fetch = `/.netlify/functions/node-fetch`;
   
-  Axios.get(`${api_node_fetch}/v1/blog/posts?page=${page}&perPage=2`, {
+  Axios.get(`https://kopisob-api.herokuapp.com/v1/blog/posts?page=${page}&perPage=2`, {
     headers: { 
       accept: "Accept: application/json" 
     } 
