@@ -1,8 +1,10 @@
 import Axios from "axios"
 
 export const setDataBlog = (page) => (dispatch) => {
-    Axios.get(`https://kopisob-api.vercel.app/v1/blog/posts?page=${page}&perPage=2`, {
-      mode: "cors",
+    Axios.get(`https://kopisob-api.netlify.app/v1/blog/posts?page=${page}&perPage=2`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     })
       .then((result) => {
         const responseAPI = result.data;
