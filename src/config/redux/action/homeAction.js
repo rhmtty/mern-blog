@@ -1,7 +1,7 @@
 import Axios from "axios"
 
 export const setDataBlog = (page) => (dispatch) => {
-    Axios.get(`https://kopisob-api.herokuapp.com/v1/blog/posts?page=${page}&perPage=2`)
+    Axios.get(`https://kopisob-api.herokuapp.com/v1/blog/posts?page=${page}&perPage=2`, { mode: 'cors' })
       .then((result) => {
         const responseAPI = result.data;
 
