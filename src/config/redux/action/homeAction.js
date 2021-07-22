@@ -1,25 +1,26 @@
 import Axios from "axios"
 
 export const setDataBlog = (page) => (dispatch) => {
-    Axios.get(`https://kopisob-api.herokuapp.com/v1/blog/posts?page=${page}&perPage=2`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-      }
-    })
-      .then((result) => {
-        const responseAPI = result.data;
+  const api_node_fetch = `/.netlify/functions/node-fetch`;
+  
+  Axios.get(`${api_node_fetch}/v1/blog/posts?page=${page}&perPage=2`, {
+    headers: { 
+      accept: "Accept: application/json" 
+    } 
+  })
+    .then((result) => {
+      const responseAPI = result.data;
 
-        dispatch({ type: "UPDATE_DATA_BLOG", payload: responseAPI.data });
-        dispatch({
-          type: "UPDATE_PAGE",
-          payload: {
-            currentPage: responseAPI.current_page,
-            totalPage: Math.ceil(responseAPI.total_data / responseAPI.per_page),
-          },
-        });
-      })
-      .catch((err) => {
-        console.log(`error: ${err}`);
+      dispatch({ type: "UPDATE_DATA_BLOG", payload: responseAPI.data });
+      dispatch({
+        type: "UPDATE_PAGE",
+        payload: {
+          currentPage: responseAPI.current_page,
+          totalPage: Math.ceil(responseAPI.total_data / responseAPI.per_page),
+        },
       });
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`);
+    });
 }
