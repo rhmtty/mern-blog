@@ -8,7 +8,7 @@ const BlogItem = (props) => {
     const {image, title, name, date, body, _id, onDelete} = props
     return (
         <div className="blog-item">
-            <img className="image-thumb" src={image} alt="post" />
+            <img className="image-thumb" src={image} alt="poster" />
             <div className="content-detail">
                 <div className="title-wrapper">
                     <p className="title">{title}</p>
